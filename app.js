@@ -12,9 +12,32 @@ function updateProductNumber(product,price, isIncreasing) {
     // updateCaseTotal
     const productTotal = document.getElementById(product +'-total');
     productTotal.innerText = productNumber *  price;
+    calculateTotal();
+}
 
+
+function getInputValue(product){
+    const productInput =document.getElementById(product+'-number');
+    const productNumber =parseFloat( productInput.value) ;
+    return productNumber;
+}
+
+function calculateTotal (){
+   
+ const phoneTotal =getInputValue('phone') * 1219;
+ const caseTotal =getInputValue('case')*59;
+
+ const subTotal =phoneTotal+caseTotal;
+ const taxAmount = subTotal/10;
+ const tatalPrice = subTotal+taxAmount;
+
+ document.getElementById('sub-total').innerText=subTotal;
+ document.getElementById('tax-amount').innerText=taxAmount;
+ document.getElementById('total-price').innerText=tatalPrice;
 
 }
+
+
 // phone increse decreses event
 document.getElementById('phone-plus').addEventListener('click', function () {
 
